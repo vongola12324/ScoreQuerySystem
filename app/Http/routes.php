@@ -20,7 +20,11 @@ Route::controller('/', 'QueryController', array(
     'postShow' => 'query.show'
 ));
 
-Route::get('admin', [
-    'as' => 'admin',
-    'uses' => 'AdminController@index'
-]);
+Route::controller('admin', 'AdminController', array(
+    'getIndex' => 'admin.index',
+    'getLogin' => 'admin.login',
+    'postCreateContest' => 'contest.create',
+    'postUpdateContest' => 'contest.update',
+    'postDeleteContest' => 'contest.delete',
+    'getList' => 'contest.list'
+));

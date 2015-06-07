@@ -27,7 +27,7 @@ class QueryController extends Controller {
 
     public function postAuth()
     {
-        $contestName = ['遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'];
+        $contestName = ['', '遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'];
         $contestID = Request::get('ContestID');
         $ticketID = Request::get('TicketID');
         $identityID = Request::get('IdentityCardID');

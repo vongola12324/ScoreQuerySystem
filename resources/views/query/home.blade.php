@@ -20,7 +20,7 @@
                     {{-- 考試別 --}}
                     <div class="form-group">
                         {!! Form::label('ContestID', '考試項目', [ 'class' => 'control-label']) !!}
-                        {!! Form::select('ContestID', array('遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'), 0, [ 'id' => 'ContestID', 'class' => 'form-control', 'selected' => 'selected', 'required']) !!}
+                        {!! Form::select('ContestID', array('1' => '遠月學園入學測驗', '2' => '魔法大學附屬第一高中入學測驗', '3' => '總武高中入學測驗'), 1, [ 'id' => 'ContestID', 'class' => 'form-control', 'selected' => 'selected', 'required']) !!}
 
                     </div>
                     {{-- 驗證資料 --}}
@@ -42,7 +42,8 @@
                 <h2>注意事項</h2>
                 <ol>
                     <li>本專案依舊開發中，請勿使用於正式服務。</li>
-                    <li>有任何問題，請洽 {!!  HTML::link(Config::get('site.vcs'), 'School Query System (GitHub)', array('target'=>'_blank')) !!}</li>
+                    <li>有任何問題，請洽 {!!  HTML::link(Config::get('site.vcs'), 'School Query System (GitHub)', array('target' => '_blank')) !!}</li>
+                    <li>管理員走起 {!! HTML::linkRoute('admin.login', '登入管理系統', null, array('target' => '_blank')) !!}</li>
                 </ol>
             </div>
         </div>
