@@ -19,18 +19,17 @@
 
                     {{-- 考試別 --}}
                     <div class="form-group">
-                        <label class="control-label" for="ContestID">考試項目</label>
-                        {{--{!! Form::select('ContestID', ['遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'], '--') !!}--}}
-                        {!! Form::select('ContestID', ['遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'], [ 'id' => 'ContestID', 'placeholder' => '請選擇考試項目', 'class' => 'form-control', 'required']) !!}
+                        {!! Form::label('ContestID', '考試項目', [ 'class' => 'control-label']) !!}
+                        {!! Form::select('ContestID', array('遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'), 0, [ 'id' => 'ContestID', 'class' => 'form-control', 'selected' => 'selected', 'required']) !!}
 
                     </div>
                     {{-- 驗證資料 --}}
                     <div class="form-group">
-                        <label class="control-label" for="TicketID">准考證號碼</label>
+                        {!! Form::label('TicketID', '准考證號碼', [ 'class' => 'control-label']) !!}
                         {!! Form::text('TicketID', null, ['id' => 'TicketID', 'placeholder' => '請輸入准考證號碼', 'class' => 'form-control', 'required']) !!}
                     </div>
                     <div class="form-group">
-                        <label class="control-label" for="IdentityCardID">身分證字號</label>
+                        {!! Form::label('IdentityCardID', '身分證字號', [ 'class' => 'control-label']) !!}
                         {!! Form::text('IdentityCardID', null, ['id' => 'IdentityCardID', 'placeholder' => '請輸入身分證字號', 'class' => 'form-control', 'required']) !!}
                     </div>
                     {!! Form::hidden('token', 'login') !!}

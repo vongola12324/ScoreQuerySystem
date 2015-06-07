@@ -12,6 +12,9 @@
             <div class="table">
                 No data
             </div>
+            <div class="text-center">
+                {!! HTML::linkRoute('query.home', '回首頁', [], ['class' => 'btn btn-primary', 'role' => 'button']) !!}
+            </div>
         </div>
     </div>
 @endsection

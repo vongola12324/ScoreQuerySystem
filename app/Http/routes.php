@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller('/', 'QueryController', array(
     'getIndex' => 'query.home',
-    'postLogin' => 'query.login',
+    'postAuth' => 'query.login',
     'postShow' => 'query.show'
 ));
 

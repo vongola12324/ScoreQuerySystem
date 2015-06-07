@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 
 class QueryController extends Controller {
 
@@ -24,12 +25,13 @@ class QueryController extends Controller {
 		return view('query/home');
 	}
 
-    public function postLogin()
+    public function postAuth()
     {
         $contestName = ['遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'];
-        $contestID = Input::get('ContestID');
-        $ticketID = Input::get('TicketID');
-        $identityID = Input::get('IdentityCardID');
+        $contestID = Request::get('ContestID');
+        $ticketID = Request::get('TicketID');
+        $identityID = Request::get('IdentityCardID');
+//        dd("CID=".$contestID."\nTID=".$ticketID."\nID=".$identityID);
         if (!empty($contestID) && !empty($ticketID) && !empty($identityID)){
             return view('query/show')->with('ContestName', $contestName[$contestID])->with('UserName', $identityID);
         }
