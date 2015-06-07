@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'zh-tw',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -145,7 +145,13 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
-	],
+        /*
+         * Composer
+         */
+        'Illuminate\Html\HtmlServiceProvider',
+        'Maatwebsite\Excel\ExcelServiceProvider',
+
+    ],
 
 	/*
 	|--------------------------------------------------------------------------
@@ -192,6 +198,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+        'HTML' => 'Illuminate\Html\HtmlFacade',
+        'Form' => 'Illuminate\Html\FormFacade',
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+        'Carbon' => 'Carbon\Carbon',
 
 	],
 

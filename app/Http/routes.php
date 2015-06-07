@@ -11,11 +11,16 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+use Illuminate\Support\Facades\Route;
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+Route::controller('/', 'QueryController', array(
+    'getIndex' => 'query.home',
+    'postLogin' => 'query.login',
+    'postShow' => 'query.show'
+));
+
+Route::get('admin', [
+    'as' => 'admin',
+    'uses' => 'AdminController@index'
 ]);
