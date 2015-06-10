@@ -22,12 +22,14 @@ class QueryController extends Controller {
 	 */
 	public function getIndex()
 	{
-		return view('query/home');
+
+        $contestName = ['1' => '遠月學園入學測驗', '2' => '魔法大學附屬第一高中入學測驗', '3' => '總武高中入學測驗'];
+		return view('query/home')->with('Contest', $contestName);
 	}
 
     public function postAuth()
     {
-        $contestName = ['', '遠月學園入學測驗', '魔法大學附屬第一高中入學測驗', '總武高中入學測驗'];
+        $contestName = ['1' => '遠月學園入學測驗', '2' => '魔法大學附屬第一高中入學測驗', '3' => '總武高中入學測驗'];
         $contestID = Request::get('ContestID');
         $ticketID = Request::get('TicketID');
         $identityID = Request::get('IdentityCardID');

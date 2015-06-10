@@ -7,9 +7,9 @@
                 <h1>校園成績查詢系統</h1>
             </div>
             @if(isset($error))
-            <div class="alert alert-warning text-center">
-                錯誤 : 查無使用者或相關應考紀錄，有疑慮請洽試務處！
-            </div>
+                <div class="alert alert-warning text-center">
+                    錯誤 : 查無使用者或相關應考紀錄，有疑慮請洽試務處！
+                </div>
             @endif
             <div class="panel panel-default">
                 {{-- Panel body --}}
@@ -20,7 +20,7 @@
                     {{-- 考試別 --}}
                     <div class="form-group">
                         {!! Form::label('ContestID', '考試項目', [ 'class' => 'control-label']) !!}
-                        {!! Form::select('ContestID', array('1' => '遠月學園入學測驗', '2' => '魔法大學附屬第一高中入學測驗', '3' => '總武高中入學測驗'), 1, [ 'id' => 'ContestID', 'class' => 'form-control', 'selected' => 'selected', 'required']) !!}
+                        {!! Form::select('ContestID', $Contest, 1, [ 'id' => 'ContestID', 'class' => 'form-control', 'selected' => 'selected', 'required']) !!}
 
                     </div>
                     {{-- 驗證資料 --}}
@@ -32,7 +32,6 @@
                         {!! Form::label('IdentityCardID', '身分證字號', [ 'class' => 'control-label']) !!}
                         {!! Form::text('IdentityCardID', null, ['id' => 'IdentityCardID', 'placeholder' => '請輸入身分證字號', 'class' => 'form-control', 'required']) !!}
                     </div>
-                    {!! Form::hidden('token', 'login') !!}
                     {!! Form::submit('送出', ['class' => 'btn btn-primary']) !!}
                     {!! Form::close() !!}
                 </div>

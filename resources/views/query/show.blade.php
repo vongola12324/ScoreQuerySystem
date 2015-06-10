@@ -1,5 +1,9 @@
 @extends('app')
 
+@section('title')
+    查詢結果
+@endsection
+
 @section('content')
     <div class="container-fluid">
         <div class="container">
