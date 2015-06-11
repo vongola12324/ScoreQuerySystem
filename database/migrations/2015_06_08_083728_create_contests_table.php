@@ -16,6 +16,8 @@ class CreateContestsTable extends Migration {
 		{
 			$table->increments('id');
             $table->string('name');
+            $table->timestamp('start');
+            $table->timestamp('end');
             $table->text('subject');
 			$table->timestamps();
 		});
