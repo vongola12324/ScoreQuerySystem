@@ -33,7 +33,7 @@ class QueryController extends Controller {
         $contestID = Request::get('ContestID');
         $ticketID = Request::get('TicketID');
         $identityID = Request::get('IdentityCardID');
-//        dd("CID=".$contestID."\nTID=".$ticketID."\nID=".$identityID);
+        dd("CID=".$contestID."\nTID=".$ticketID."\nID=".sha256($identityID));
         if (!empty($contestID) && !empty($ticketID) && !empty($identityID)){
             return view('query/show')->with('ContestName', $contestName[$contestID])->with('UserName', $identityID);
         }
