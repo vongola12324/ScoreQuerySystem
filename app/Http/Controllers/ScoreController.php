@@ -1,84 +1,81 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
+use App\Score;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Maatwebsite\Excel\Facades\Excel;
 
-class ScoreController extends Controller {
+class ScoreController extends Controller
+{
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+    public function getIndex(Request $request)
+    {
+        $contest_id = $request->all()->ContestID;
+        $score = Score::all()->where('ContestID', "=", $contest_id);
+        return view('score/list')->with('Scores', $score);
+    }
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+    public function getCreate()
+    {
+        return view('score/create');
+    }
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+    public function postCreate(Request $request)
+    {
+        $score = $request->all();
+        $file = $request->File;
+        if(empty($file) || $file == null){
+            $contestID = $score->ContestID;
+            $userID = $score->UserID;
+            $scoredata = json_encode($score->ScoreData);
+            $score = Score::create(array(
+                'contests_id' => $contestID,
+                'users_id' => $userID,
+                'scoredata' => $scoredata,
+            ));
+        }
+        else{
+            $result = null;
+            $firstRow = null;
+            Excel::load($file, function($reader){
+                $firstRow = $reader->first();
+                $result = $reader->toArray();
+            });
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+        }
+        return Redirect::route('score.list');
+    }
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+    public function getUpdate()
+    {
+
+    }
+
+    public function postUpdate(Request $request)
+    {
+
+    }
+
+    public function getDelete()
+    {
+
+    }
+
+    public function postDelete(Request $request)
+    {
+
+    }
+
+    public function getQuery(){
+
+    }
+
+    public function postQuery()
+    {
+
+    }
 
 }

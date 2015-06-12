@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration {
 			$table->unsignedInteger('contests_id');
             $table->string('ticket', 64);
             $table->string('lastlogin_ip', 40);
-            $table->timestamp('lastlogin_at');
+            $table->timestamp('lastlogin_at')->nullable();
             $table->timestamps();
 		});
 	}

@@ -1,16 +1,16 @@
 <?php namespace App\Http\Controllers;
 
 use App\Contest;
-use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
-class ContestController extends Controller {
+class ContestController extends Controller
+{
 
     public function getIndex()
     {
         $contests = Contest::all();
+
         return view('admin/contest/list')->with('Contests', $contests);
     }
 
@@ -30,6 +30,7 @@ class ContestController extends Controller {
             'Info' => $Info,
             'Subject' => $Subject,
         ));
+
         return Redirect::route('contest.list');
     }
 
@@ -37,6 +38,7 @@ class ContestController extends Controller {
     {
         $id = Request::input('id');
         $contest = Contest::find($id);
+
         return view('admin/contest/update')->with('Contest', $contest);
     }
 
@@ -75,9 +77,9 @@ class ContestController extends Controller {
     public function postQuery(Request $request)
     {
         $Data = null;
+
         return Redirect::route('contest.query')->with('Data', $Data);
     }
-
 
 
 }
